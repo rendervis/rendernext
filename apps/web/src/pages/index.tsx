@@ -33,8 +33,8 @@ export default function Home() {
             Turborepo Example
           </span>
         </h1>
-        <div className="mx-auto mt-5 max-w-xl sm:flex sm:justify-center md:mt-8">
-          <Button />
+        <div className="mx-auto mt-5 max-w-xl sm:flex sm:justify-center md:mt-8 bg-white">
+          <Button >BIG BUTTON</Button>
         </div>
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 place-content-evenly">

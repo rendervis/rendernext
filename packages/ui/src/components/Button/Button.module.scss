@@ -1,0 +1,26 @@
+
+
+  .root {
+     display: inline-flex;
+     padding-top: 1.25rem;
+     padding-bottom: 1.25rem;
+     padding-left: 2.5rem;
+     padding-right: 2.5rem;
+     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+     transition-duration: 150ms;
+     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+     font-size: 0.875rem;
+     line-height: 1.25rem;
+     font-weight: 600;
+     line-height: 1.5rem;
+     text-align: center;
+     text-transform: uppercase;
+     justify-content: center;
+     align-items: center;
+     border-width: 1px;
+     border-color: transparent;
+     cursor: pointer;
+     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+     background-color: blanchedalmond;
+   }
+
