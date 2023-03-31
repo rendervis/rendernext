@@ -13,7 +13,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack serve --config ./webpack.dev.config.js",
-    "build": "webpack --config ./webpack.config.js --watch",
+    "build": "webpack --config ./webpack.config.js",
     "check-types": "tsc --noEmit"
   },
   "peerDependencies": {
