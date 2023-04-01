@@ -1,26 +1,37 @@
-const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: path.resolve(__dirname, 'src/components/index.ts'),
+  devtool:false,
+  entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    library: 'ui',
-    libraryTarget: 'umd',
-    umdNamedDefine: true,
+    // filename: '[name].bundle.js'
   },
-  devtool: 'inline-source-map',
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', 'ts-loader'],
+        test: /\.(js|ts)x?$/,
+        exclude: [/node_modules/],
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: [
+            '@babel/preset-env',
+            '@babel/preset-react',
+            '@babel/preset-typescript'],
+             plugins: [
+              'istanbul',
+              ['@babel/plugin-transform-modules-commonjs', {loose: true}],
+            ],
+          },
+        }],
       },
       {
-        test: /\.scss$/,
+        test: /\.module\.s?css$/,
         use: [
           'style-loader',
           {
@@ -29,6 +40,11 @@ module.exports = {
           },
           'sass-loader',
         ],
+      },
+      {
+        test: /\.s?css$/,
+        exclude: /\.module\.s?css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
@@ -39,9 +55,17 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style.css',
     }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'public', 'index.html'),
+      filename: 'index.html',
+    }),
+    new webpack.ProvidePlugin({
+      React: 'react',
+    }),
   ],
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
+  devServer: {
+    // contentBase: path.join(__dirname, 'dist'),
+    port: 3030,
+    open: true,
   },
 };

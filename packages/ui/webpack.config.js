@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'production',
@@ -58,11 +59,14 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
-    alias: {
-      react: path.resolve(__dirname, './node_modules/react'),
-    }
   },
   plugins: [
+    //generate empty/default css file.
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/components/styles.css', to: 'index.css' },
+      ],
+    }),
     new MiniCssExtractPlugin({
       filename: 'index.css',
     }),

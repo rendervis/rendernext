@@ -13,37 +13,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean
 }
 
-const Button: React.FC<ButtonProps> = (props) => {
-  const {
-    className,
-    children,
-    width,
-    disabled = false,
-    style = {},
-    Component = 'button',
-    ...rest
-  } = props
+const Button = () => {
 
 
-  const rootClassName = cn(
-    s.root,
-    className
-  )
-
-  return (
-    <Component
-      className={rootClassName}
-      disabled={disabled}
-      style={{
-        width,
-        ...style,
-      }}
-      {...rest}
-    >
-      {children}
-
-    </Component>
-  )
+  return <button>hello</button>;
 }
 
 export {Button}
