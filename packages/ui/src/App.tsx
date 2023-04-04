@@ -6,8 +6,6 @@ export default function App() {
         <main className="column">
         <div>React components</div>
         <div>
-          bau
-        <Button/>
         </div>
         </main>
       </div>

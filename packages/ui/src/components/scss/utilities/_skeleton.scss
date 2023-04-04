@@ -1,0 +1,39 @@
+@use 'keyframes';
+
+$skeleton-background: hsl(220, 13%, 91%);
+$skeleton-element: hsl(216, 12%, 84%);
+
+/// Skeleton loading animation
+/// @access public
+/// @example @include skeleton;
+/// @group utilities
+@mixin skeleton {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: $skeleton-background;
+  box-shadow: none;
+  pointer-events: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: none;
+    cursor: default;
+    outline: none;
+  }
+
+  &::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: 3000ms ease-in-out skeleton infinite;
+    background: $skeleton-element;
+    content: '';
+    will-change: transform-origin, transform, opacity;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+}

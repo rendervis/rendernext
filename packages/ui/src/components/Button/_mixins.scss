@@ -1,0 +1,69 @@
+@use 'vars' as *;
+
+@mixin button-base {
+  position: relative;
+  display: inline-flex;
+  width: max-content;
+  max-width: rem(320px);
+  min-height: $button-height;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: $button-padding;
+  margin: 0;
+  border-radius: $button-border-radius;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  text-decoration: none;
+  vertical-align: top;
+  color: $gray-600;
+  background-color: $gray-100;
+
+  &:disabled,
+  &:hover:disabled,
+  &:focus:disabled,
+  &--disabled,
+  &--disabled:hover,
+  &--disabled:focus {
+    border-color: $button-disabled;
+    background: $button-disabled;
+    box-shadow: none;
+    color: $text-on-color-disabled;
+    cursor: not-allowed;
+  }
+}
+
+/// Button variant styles
+/// @access private
+/// @group button
+@mixin button-theme(
+  $bg-color,
+  $border-color,
+  $font-color,
+  $hover-bg-color,
+  $active-color
+) {
+  border-width: $button-outline-width;
+  border-style: solid;
+  border-color: $border-color;
+  background-color: $bg-color;
+  color: $font-color;
+
+  &:hover {
+    background-color: $hover-bg-color;
+  }
+
+  &:active {
+    background-color: $active-color;
+  }
+
+
+}
+
+@mixin button-padding-large {
+  align-items: baseline;
+  padding-top: $spacing-unit;
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
+}

@@ -8,7 +8,7 @@ import {ErrorBoundary} from 'react-error-boundary'
 import {ErrorComp} from '../../src/components/ErrorComp'
 import {PageSpinner} from '../../src/components/PageSpinner'
 import {Suspense} from 'react'
-import '../../src/components/styles.css' // import styles here so you don't have to import everywhere
+import '../../src/components/scss/index.scss' // import styles here so you don't have to import everywhere
 
 Cypress.Commands.add('mount', mount)
 

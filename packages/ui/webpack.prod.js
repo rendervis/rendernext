@@ -1,3 +1,5 @@
+//https://github.com/garousianstudio/starter-webpack-react-es6-sass/blob/master/webpack.prod.js
+
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -64,7 +66,7 @@ module.exports = {
     //generate empty/default css file.
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/components/styles.css', to: 'index.css' },
+        { from:  path.resolve(__dirname, 'src/components/scss/index.scss'), to: 'index.css' },
       ],
     }),
     new MiniCssExtractPlugin({

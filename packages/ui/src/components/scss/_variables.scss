@@ -1,0 +1,56 @@
+
+
+$primary-50: hsl(252, 99%, 98%);
+$primary-100: hsl(252, 99%, 96%);
+$primary-200: hsl(252, 99%, 91%);
+$primary-300: hsl(252, 99%, 84%);
+$primary-400: hsl(252, 99%, 65%);
+$primary-500: hsl(252, 99%, 46%);
+$primary-600: hsl(252, 99%, 34%);
+$primary-700: hsl(252, 99%, 27%);
+$primary-800: hsl(252, 99%, 17%);
+$primary-900: hsl(252, 99%, 11%);
+
+$gray-50: hsl(0, 0%, 98%);
+$gray-100: hsl(220, 14%, 96%);
+$gray-200: hsl(220, 13%, 91%);
+$gray-300: hsl(216, 12%, 84%);
+$gray-400: hsl(219, 11%, 65%);
+$gray-500: hsl(220, 9%, 46%);
+$gray-600: hsl(215, 14%, 34%);
+$gray-700: hsl(217, 19%, 27%);
+$gray-800: hsl(215, 28%, 17%);
+$gray-900: hsl(221, 39%, 11%);
+
+$red-50: hsl(0, 86%, 97%);
+$red-100: hsl(0, 93%, 94%);
+$red-200: hsl(0, 96%, 89%);
+$red-300: hsl(0, 94%, 82%);
+$red-400: hsl(0, 91%, 71%);
+$red-500: hsl(0, 84%, 60%);
+$red-600: hsl(0, 72%, 51%);
+$red-700: hsl(0, 74%, 42%);
+$red-800: hsl(0, 70%, 35%);
+$red-900: hsl(0, 63%, 31%);
+
+// Spacing
+$base-spacing-unit: 4px;
+$spacing-unit: $base-spacing-unit;
+$spacing-unit-2x: $spacing-unit * 2;
+$spacing-unit-3x: $spacing-unit * 3;
+$spacing-unit-4x: $spacing-unit * 4;
+$spacing-unit-5x: $spacing-unit * 5;
+$spacing-unit-6x: $spacing-unit * 6;
+
+// Font sizes
+$font-size-base: 16px;
+$font-size-lg: $font-size-base * 1.25;
+$font-size-sm: $font-size-base * 0.875;
+$line-height-base: 1.5;
+$font-family-base: Arial, sans-serif;
+
+
+$link-primary: $gray-400;
+$link-primary-hover: $gray-600;
+
+$text-disabled: $gray-900;

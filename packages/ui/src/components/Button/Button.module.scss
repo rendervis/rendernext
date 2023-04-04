@@ -1,26 +1,131 @@
+@use "vars" as *;
+@use "mixins" as *;
+@use "../scss/utilities/skeleton" as *;
+@import "../scss/index";
 
+$button-primary: $primary-500;
+$text-on-color: $gray-50;
+$button-primary-hover: $primary-400;
+$button-primary-active: $primary-600;
 
-  .root {
-     display: inline-flex;
-     padding-top: 1.25rem;
-     padding-bottom: 1.25rem;
-     padding-left: 2.5rem;
-     padding-right: 2.5rem;
-     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-     transition-duration: 150ms;
-     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-     font-size: 0.875rem;
-     line-height: 1.25rem;
-     font-weight: 600;
-     line-height: 1.5rem;
-     text-align: center;
-     text-transform: uppercase;
-     justify-content: center;
-     align-items: center;
-     border-width: 1px;
-     border-color: transparent;
-     cursor: pointer;
-     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-     background-color: blanchedalmond;
-   }
+$button-secondary: $gray-50;
+$button-secondary-hover: $gray-100;
+$button-secondary-active: $gray-100;
 
+$button-ghost: transparent;
+$button-ghost-hover: $gray-100;
+$button-ghost-active: $gray-100;
+
+.btn {
+  @include button-base;
+}
+.btn--primary {
+  @include button-theme($button-primary, transparent, $text-on-color, $button-primary-hover, $button-primary-active);
+  &:hover {
+    color: $text-on-color;
+  }
+}
+
+.btn--secondary {
+  @include button-theme($button-secondary, transparent, $gray-500, $button-secondary-hover, $button-secondary-active);
+
+  &:hover,
+  &:focus {
+    color: $gray-500;
+  }
+}
+
+.btn--ghost {
+  @include button-theme($button-ghost, gray-400, gray-400, $button-ghost-hover, currentColor);
+
+  padding: $button-padding-ghost;
+
+  &:hover,
+  &:active {
+    color: $link-primary-hover;
+  }
+
+  &:disabled,
+  &:hover:disabled,
+  &:focus:disabled,
+  &.btn--disabled,
+  &.btn--disabled:hover,
+  &.btn--disabled:focus {
+    border-color: transparent;
+    background: transparent;
+    color: $text-on-color-disabled;
+    outline: none;
+  }
+  &.btn--sm {
+    padding: $button-padding-sm;
+  }
+}
+
+.btn--danger {
+  @include button-theme(
+    $button-danger-primary,
+    transparent,
+    $text-on-color,
+    $button-danger-hover,
+    $button-danger-active
+  );
+
+  &:hover {
+    color: $text-on-color;
+  }
+
+  &--ghost {
+    @include button-theme(transparent, transparent, $button-danger-hover, currentColor, $button-danger-active);
+
+    padding: $button-padding-ghost;
+
+    &:hover,
+    &:active {
+      color: $text-on-color;
+    }
+
+    &:disabled,
+    &:hover:disabled,
+    &:focus:disabled,
+    &.btn--disabled,
+    &.btn--disabled:hover,
+    &.btn--disabled:focus {
+      border-color: transparent;
+      background: transparent;
+      color: $text-disabled;
+      outline: none;
+    }
+
+    &.btn--sm {
+      padding: $button-padding-sm;
+    }
+
+    &.btn--md {
+      padding: $button-padding-ghost-field;
+    }
+  }
+}
+
+.btn--sm {
+  min-height: $button-sm-height;
+  padding: $button-padding-sm;
+}
+
+.btn--md {
+  min-height: rem(40px);
+  padding: $button-padding-field;
+}
+
+// Skeleton State
+.btn--skeleton {
+  @include skeleton;
+  width: rem(150px);
+}
+
+.btn--disabled {
+  box-shadow: rem(-1px) 0 0 0;
+
+  &:first-of-type {
+    box-shadow: none;
+  }
+}
