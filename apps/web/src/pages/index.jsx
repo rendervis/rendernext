@@ -122,7 +122,7 @@ export default function Home({ articles }) {
             Software developer.
           </h1>
           <p className="mt-6 text-base text-zinc-600">
-          I am Talvan Octavian, an application developer from Romania who is passionate about creating user-friendly web applications. My specialty lies in the Canva API and its related libraries, such as p5JS and threeJS. By leveraging my expertise, I hope to offer creative solutions to companies looking to augment their online presence. Let's work together to materialize your vision with the aid of technology.
+          I am Talvan Octavian, an application developer from Romania who is passionate about creating user-friendly web applications. My specialty lies in the Canva API and its related libraries, such as p5JS and threeJS. By leveraging my expertise, I hope to offer creative solutions to companies looking to augment their online presence. Let&apos;s work together to materialize your vision with the aid of technology.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
