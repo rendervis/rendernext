@@ -1,0 +1,92 @@
+@import '../scss/variables';
+/// @type Number
+/// @access public
+/// @group button
+$button-font-weight: 400 !default;
+
+/// @type Number
+/// @access public
+/// @group button
+$button-font-size: 0.875rem !default;
+
+/// @type Number
+/// @access public
+/// @group button
+$button-border-radius: 6px !default;
+
+/// @type Number
+/// @access public
+/// @group button
+$button-height: 2rem !default;
+
+/// @type Number
+/// @access public
+/// @group button
+$button-sm-height: 0 !default;
+
+/// @type Value
+/// @access public
+/// @group button
+$button-padding: $spacing-unit calc(#{$spacing-unit} + 2px)
+$spacing-unit calc(#{$spacing-unit} + 2px) !default;
+
+/// @type Value
+/// @access public
+/// @group button
+$button-padding-field: calc(#{$spacing-unit} + 2px) calc(#{$spacing-unit} + 4px)
+calc(#{$spacing-unit} + 2px) calc(#{$spacing-unit} + 4px) !default;
+
+/// @type Value
+/// @access public
+/// @group button
+$button-padding-sm: calc(#{$spacing-unit} - 2px) calc(#{$spacing-unit} - 2px) !default;
+
+/// @type Number
+/// @access public
+/// @group button
+/// Uses the same padding-y as normal buttons, but removes extra padding-right
+$button-padding-ghost: calc(0.875rem - 3px) $spacing-unit !default;
+
+/// @type Number
+/// @access public
+/// @group button
+/// Uses the same padding-y as field buttons, but removes extra padding-right
+$button-padding-ghost-field: calc(0.675rem - 3px) $spacing-unit !default;
+
+
+
+/// @type Number
+/// @access public
+/// @group button
+$button-border-width: 2px !default;
+
+/// @type Number
+/// @access public
+/// @group button
+$button-outline-width: 1px !default;
+
+
+/// @type Color
+/// @access public
+/// @group button
+$button-disabled: $gray-600 !default;
+
+/// @type Color
+/// @access public
+/// @group button
+$text-on-color-disabled: $gray-700 !default;
+
+/// @type Color
+/// @access public
+/// @group button
+$button-danger-primary: $red-400 !default;
+
+/// @type Color
+/// @access public
+/// @group button
+$button-danger-hover: $red-600 !default;
+
+/// @type Color
+/// @access public
+/// @group button
+$button-danger-active: $red-600 !default;
