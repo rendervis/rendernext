@@ -88,7 +88,8 @@ const config = {
   resolve: {
     alias: {
       scss: path.resolve(__dirname, './src/components/scss'),
-      assets: path.resolve(__dirname, './assets')
+      assets: path.resolve(__dirname, './assets'),
+      p5playground: path.resolve(__dirname, '../../packages/p5playground/dist/js'),
     },
     extensions: ['.js', '.jsx','.ts', '.tsx','.mdx','.css', '.scss', '.svg']
   },
