@@ -1,13 +1,11 @@
-
-import {Button} from './components'
+import { Button } from './components'
 export default function App() {
   return (
-      <div className="section columns">
-        <main className="column">
+    <div className="section columns">
+      <main className="column">
         <div>React components</div>
-        <div>
-        </div>
-        </main>
-      </div>
+        <div></div>
+      </main>
+    </div>
   )
 }

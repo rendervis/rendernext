@@ -1,0 +1,14 @@
+{
+  "name": "webpack",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "private": true,
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "tsconfig": "workspace:*"
+  }
+}

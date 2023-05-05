@@ -2,6 +2,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
@@ -71,7 +72,12 @@ function Resume() {
         {resume.map((role, roleIndex) => (
           <li key={roleIndex} className="flex gap-4">
             <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5">
-              <Image src={role.logo} alt="Logo image" className="h-7 w-7 rounded-full" unoptimized />
+              <Image
+                src={role.logo}
+                alt="Logo image"
+                className="h-7 w-7 rounded-full"
+                unoptimized
+              />
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2 ">
               <dt className="sr-only">Company</dt>
@@ -122,7 +128,13 @@ export default function Home({ articles }) {
             Software developer.
           </h1>
           <p className="mt-6 text-base text-zinc-600">
-          I am Talvan Octavian, an application developer from Romania who is passionate about creating user-friendly web applications. My specialty lies in the Canva API and its related libraries, such as p5JS and threeJS. By leveraging my expertise, I hope to offer creative solutions to companies looking to augment their online presence. Let&apos;s work together to materialize your vision with the aid of technology.
+            I am Talvan Octavian, an application developer from Romania who is
+            passionate about creating user-friendly web applications. My
+            specialty lies in the Canva API and its related libraries, such as
+            p5JS and threeJS. By leveraging my expertise, I hope to offer
+            creative solutions to companies looking to augment their online
+            presence. Let&apos;s work together to materialize your vision with
+            the aid of technology.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink

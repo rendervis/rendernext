@@ -2,6 +2,9 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
   "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "ES2020"],
+    "module": "ES2020",
+    "target": "ES2020",
     "composite": false,
     "declaration": true,
     "declarationMap": true,
@@ -14,7 +17,8 @@
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules"]
 }
