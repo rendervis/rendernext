@@ -1,8 +1,8 @@
 import nextMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import rehypePrism from '@mapbox/rehype-prism'
-import path from 'path'
 import  withPlugins from 'next-compose-plugins'
+import path from 'path'
 
 
 /** @type {import('next').NextConfig} */

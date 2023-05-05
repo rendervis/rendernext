@@ -54,7 +54,7 @@ importers:
       '@headlessui/react': 1.7.13
       '@heroicons/react': 2.0.17
       '@mapbox/rehype-prism': 0.8.0
-      '@mdx-js/loader': ^2.3.0
+      '@mdx-js/loader': 2.3.0
       '@next/mdx': 13.2.4
       '@tailwindcss/typography': 0.5.9
       '@types/node': 18.11.17
@@ -65,8 +65,7 @@ importers:
       feed: 4.2.2
       focus-visible: 5.2.0
       next: 13.3.4
-      next-compose-plugins: ^2.2.1
-      next-transpile-modules: ^10.0.0
+      next-compose-plugins: 2.2.1
       p5playground: workspace:*
       postcss: 8.4.20
       react: 18.2.0
@@ -87,7 +86,6 @@ importers:
       focus-visible: 5.2.0
       next: 13.3.4_biqbaboplfbrettd7655fr4n2y
       next-compose-plugins: 2.2.1
-      next-transpile-modules: 10.0.0
       p5playground: link:../../packages/p5playground
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -15726,13 +15724,6 @@ packages:
 
   /next-compose-plugins/2.2.1:
     resolution: {integrity: sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==}
-    dev: false
-
-  /next-transpile-modules/10.0.0:
-    resolution: {integrity: sha512-FyeJ++Lm2Fq31gbThiRCrJlYpIY9QaI7A3TjuhQLzOix8ChQrvn5ny4MhfIthS5cy6+uK1AhDRvxVdW17y3Xdw==}
-    deprecated: All features of next-transpile-modules are now natively built-in Next.js 13.1. Please use Next's transpilePackages option :)
-    dependencies:
-      enhanced-resolve: 5.13.0
     dev: false
 
   /next/13.3.4_biqbaboplfbrettd7655fr4n2y:
