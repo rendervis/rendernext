@@ -1,4 +1,3 @@
-// Sketch1React.tsx
 import { useRef, useEffect } from 'react'
 import P5 from 'p5'
 import initSketch from '../../lib/bootstrap/bootstrap'

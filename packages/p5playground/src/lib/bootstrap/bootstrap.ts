@@ -16,7 +16,7 @@ const getContainerElement = (containerId: string): HTMLElement => {
 }
 
 // Maintain a dictionary of created sketches, keyed by container ID
-const createdSketches: { [key: string]: P5 } = {}
+export const createdSketches: { [key: string]: P5 } = {}
 
 // Initialize the sketch
 const initSketch = ({ backgroundColor, containerId }: SketchProps) => {
