@@ -7,11 +7,21 @@ import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
 import causiq from '@/images/logos/causiq.jpg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
+import logoRendernext from '@/images/logos/rendernext.svg'
 import { formatDate } from '@/lib/formatDate'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { BriefcaseIcon } from '@/components/icons'
+
+const Pointillism = dynamic(
+  () =>
+    import('p5playground').then((mod) => {
+      return mod.Pointillism
+    }),
+  {
+    ssr: false,
+  }
+)
 
 function Article({ article }) {
   return (
@@ -46,7 +56,7 @@ function Resume() {
     {
       company: 'Rendernext',
       title: 'Fullstack Web Developer',
-      logo: logoPlanetaria,
+      logo: logoRendernext,
       start: '2022',
       end: {
         label: 'Present',
@@ -121,7 +131,9 @@ export default function Home({ articles }) {
           content="I am Talvan Octavian, an application developer from Romania who is passionate about creating user-friendly web applications. My specialty lies in the Canva API and its related libraries, such as p5JS and threeJS. By leveraging my expertise, I hope to offer creative solutions to companies looking to augment their online presence. Let's work together to materialize your vision with the aid of technology."
         />
       </Head>
-
+      <div className="absolute left-0 top-0 h-full w-full">
+        <Pointillism id='canvas-about-page' />
+      </div>
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
