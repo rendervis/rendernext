@@ -1,6 +1,18 @@
-A collection of sketches, agents and games
+A collection of sketches, agents and games.
+
+The end goal is to integrate the sketches in react and nextJS applications
+in some way, either to showcase or enhance the user experience.
 
 p5.js drawings with hot reload. shared drawing with a ReactComponent that can be integrated with reactJS and nextJS applications.
+
+The sketches are interpretations or adaptations from several sources as part of study. At the time these sources are:
+Daniel Shiffman
+    "The Nature of Code"
+    "Learning Processing"
+
+Keith Peters
+    [codingmath](https://www.youtube.com/@codingmath/)
+    there are also some books under his name. look it up.
 
 ## react import
 

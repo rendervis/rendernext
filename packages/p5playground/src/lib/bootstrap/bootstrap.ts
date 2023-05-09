@@ -2,7 +2,6 @@ import P5 from 'p5'
 
 // Define the props for the sketch
 interface SketchProps {
-  backgroundColor?: string
   containerId: string
 }
 
@@ -19,15 +18,13 @@ const getContainerElement = (containerId: string): HTMLElement => {
 export const createdSketches: { [key: string]: P5 } = {}
 
 // Initialize the sketch
-const initSketch = ({ backgroundColor, containerId }: SketchProps) => {
+const initSketch = ({ containerId }: SketchProps) => {
+  console.info(`Initializing P5 sketch for container ID ${containerId}`)
+
   const containerElement = getContainerElement(containerId)
 
   const init = (sketch: (p: P5) => void) => {
     const wrapper = (p: P5) => {
-      if (backgroundColor) {
-        p.background(backgroundColor)
-      }
-
       sketch(p)
     }
 

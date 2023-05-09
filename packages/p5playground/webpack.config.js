@@ -105,6 +105,9 @@ module.exports = async () => {
   const { generatedEntries, generatedPlugins } = await getDirectoryEntries()
 
   return {
+    experiments: {
+      asyncWebAssembly: true
+    },
     entry: {
       index: path.resolve(__dirname, 'src/index.ts'),
       ...generatedEntries,

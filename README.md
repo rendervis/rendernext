@@ -17,6 +17,12 @@ This repo includes the following packages/apps:
     * webpack5 as builder
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- `p5playground`: [work in progress]
+    * p5JS sketches and games. shared by `web` application
+    * webpack5 as builder
+- `three-canvas`: [work in progress]
+    * threeJS
+    * vite as builder
 
 
 
@@ -35,5 +41,7 @@ Run the following command:
 ```sh
 cd "root"
 pnpm install
-git init . && git add . && git commit -m "Init"
+pnpm build
+
+pnpm run dev
 ```
