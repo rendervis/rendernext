@@ -1,4 +1,4 @@
-import * as P5 from 'p5'
+import P5 from 'p5'
 
 export function sharedDraw(p: P5) {
   // Draw a white background

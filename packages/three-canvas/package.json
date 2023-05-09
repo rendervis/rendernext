@@ -7,7 +7,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
-  "keywords": [],
+  "keywords": ["threejs", "canvas"],
   "author": "",
   "license": "ISC",
   "dependencies": {

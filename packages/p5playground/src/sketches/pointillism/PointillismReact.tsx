@@ -1,24 +1,20 @@
-import { useRef, useEffect } from 'react'
 import P5 from 'p5'
-import initSketch, { createdSketches } from '../../lib/bootstrap/bootstrap'
 
+// project imports
+import P5Wrapper from '../../lib/P5Wrapper'
 import { sharedDraw } from './sharedDraw'
-import sketchWrapper from '../../lib/bootstrap/sketchWrapper'
 
+// define type
 type PointillismProps = {
   id: string
 }
 
+// ========= // POINTILLISM REACT // ========= //
+
 const Pointillism = (props: PointillismProps) => {
-  const containerRef = useRef<HTMLDivElement>(null)
   const containerId = props.id || 'p5-container'
 
   const sketchSetup = (p: P5) => {
-    p.createCanvas(
-      containerRef.current?.clientWidth || 100,
-      containerRef.current?.clientHeight || 100
-    )
-
     p.frameRate(15)
     p.noStroke()
     p.angleMode(p.RADIANS)
@@ -28,24 +24,11 @@ const Pointillism = (props: PointillismProps) => {
     sharedDraw(p)
   }
 
-  useEffect(() => {
-    if (containerRef.current && containerId) {
-      const sketch = sketchWrapper(sketchSetup, sketchDraw)
-      const init = initSketch({ containerId })
-      init(sketch)
-    }
-
-    // delete the sketch when the component is unmounted
-    return () => {
-      delete createdSketches[containerId]
-    }
-  }, [containerId])
-
   return (
-    <div
-      style={{ width: '100%', height: '100%' }}
-      id={containerId}
-      ref={containerRef}
+    <P5Wrapper
+      containerId={containerId}
+      setup={sketchSetup}
+      draw={sketchDraw}
     />
   )
 }

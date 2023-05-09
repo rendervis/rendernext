@@ -27,6 +27,7 @@
     "dev:sketches": "webpack-dev-server --config webpack.config.js --mode development --open"
   },
   "dependencies": {
+    "@dimforge/rapier2d": "0.11.2",
     "p5": "1.6.0",
     "p5.play": "3.8.9",
     "react": "18.2.0",

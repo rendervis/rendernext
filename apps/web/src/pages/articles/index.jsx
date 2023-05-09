@@ -1,8 +1,19 @@
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { formatDate } from '@/lib/formatDate'
 import { getAllArticles } from '@/lib/getAllArticles'
+
+const Flock = dynamic(
+  () =>
+    import('p5playground').then((mod) => {
+      return mod.Flock
+    }),
+  {
+    ssr: false,
+  }
+)
 
 function Article({ article }) {
   return (
@@ -43,6 +54,9 @@ export default function ArticlesIndex({ articles }) {
           content="Discover the Latest Web Application and Marketing Tool from Rendernext."
         />
       </Head>
+      <div className="absolute left-0 top-0 h-full w-full">
+        <Flock id="article-page-container" backgroundColor={[255, 255, 255]} />
+      </div>
       <SimpleLayout
         title="Writing on software design."
         intro="Discover the Latest Web Application and Marketing Tool from Rendernext."
