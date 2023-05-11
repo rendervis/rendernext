@@ -12,6 +12,7 @@ const sketchSetup = (p: P5) => {
 }
 
 const sketchDraw = (p: P5) => {
+  p.background(250)
   sharedDraw(p)
 }
 
