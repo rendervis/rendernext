@@ -2,7 +2,7 @@
 import P5 from 'p5'
 
 class Boid {
-  position: P5.Vector
+  location: P5.Vector
   velocity: P5.Vector
   acceleration: P5.Vector
   mouseV: P5.Vector
@@ -24,7 +24,7 @@ class Boid {
     this.acceleration = p.createVector(0, 0)
     const angle = p.random(p.TWO_PI)
     this.velocity = p.createVector(p.cos(angle), p.sin(angle))
-    this.position = p.createVector(x, y)
+    this.location = p.createVector(x, y)
 
     this.r = 8.0
     this.maxSpeed = 2 // Maximum speed
@@ -42,7 +42,7 @@ class Boid {
     this.borders()
     this.render()
 
-    this.points.push(this.position.copy())
+    this.points.push(this.location.copy())
     if (this.points.length > 10) {
       this.points.splice(0, 1)
     }
@@ -79,7 +79,7 @@ class Boid {
     this.velocity.add(this.acceleration)
     // Limit speed
     this.velocity.limit(this.maxSpeed)
-    this.position.add(this.velocity)
+    this.location.add(this.velocity)
 
     // Reset acceleration to 0 each cycle
     this.acceleration.mult(0)
@@ -89,7 +89,7 @@ class Boid {
   // STEER = DESIRED MINUS VELOCITY
   seek(target: P5.Vector) {
     const tc = target.copy()
-    const desired = tc.sub(this.position) // A vector pointing from the location to the target
+    const desired = tc.sub(this.location) // A vector pointing from the location to the target
     desired.normalize()
     desired.mult(this.maxSpeed)
 
@@ -107,7 +107,7 @@ class Boid {
     // p.fill(255, 222, 0)
     // p.stroke(255, 222, 0)
     // p.push()
-    // p.translate(this.position.x, this.position.y)
+    // p.translate(this.location.x, this.location.y)
     // p.rotate(theta)
     // p.beginShape(p.TRIANGLES)
     // p.vertex(0, -this.r * 2)
@@ -131,21 +131,21 @@ class Boid {
     const width = p.width
     const height = p.height
 
-    if (this.position.x < -this.r) {
+    if (this.location.x < -this.r) {
       // this.velocity.x *= -1
-      this.position.x = width + this.r // Wrap around left edge
+      this.location.x = width + this.r // Wrap around left edge
     }
-    if (this.position.y < -this.r) {
+    if (this.location.y < -this.r) {
       // this.velocity.y *= -1
-      this.position.y = height + this.r // Wrap around top edge
+      this.location.y = height + this.r // Wrap around top edge
     }
-    if (this.position.x > width + this.r) {
+    if (this.location.x > width + this.r) {
       // this.velocity.x *= -1
-      this.position.x = -this.r // Wrap around right edge
+      this.location.x = -this.r // Wrap around right edge
     }
-    if (this.position.y > height + this.r) {
+    if (this.location.y > height + this.r) {
       // this.velocity.y *= -1
-      this.position.y = -this.r // Wrap around bottom edge
+      this.location.y = -this.r // Wrap around bottom edge
     }
   }
 
@@ -160,13 +160,13 @@ class Boid {
     for (let i = 0; i < boids.length; i++) {
       const other = boids[i]
 
-      const distance = this.position.dist(other.position)
+      const distance = this.location.dist(other.location)
 
       if (other != this && distance > 0 && distance < this.desiredSeparation) {
-        const p = this.position.copy()
+        const p = this.location.copy()
 
         // Calculate a force that is inversely proportional to distance
-        const diff = p.sub(other.position)
+        const diff = p.sub(other.location)
         diff.normalize()
         diff.div(distance)
         steer.add(diff)
@@ -200,7 +200,7 @@ class Boid {
 
     for (let i = 0; i < boids.length; i++) {
       const other = boids[i]
-      const distance = this.position.dist(other.position)
+      const distance = this.location.dist(other.location)
       if (other != this && distance < this.neighborRadius) {
         sum.add(other.velocity)
         count++
@@ -229,15 +229,15 @@ class Boid {
 
     for (let i = 0; i < boids.length; i++) {
       let other = boids[i]
-      let distance = this.position.dist(other.position)
+      let distance = this.location.dist(other.location)
       if (other != this && distance < this.neighborRadius) {
-        sum.add(other.position) // Add location
+        sum.add(other.location) // Add location
         count++
       }
     }
     if (count > 0) {
       const desired = sum.div(count)
-      return this.seek(desired) // Steer towards the position
+      return this.seek(desired) // Steer towards the location
     } else {
       return p.createVector(0, 0)
     }
@@ -245,7 +245,7 @@ class Boid {
 
   pull(target: P5.Vector, radius: number = 200, forceFactor: number = 1) {
     const p = this.p5
-    const distance = target.dist(this.position)
+    const distance = target.dist(this.location)
 
     if (distance < radius) {
       const steer = this.seek(target)
@@ -258,7 +258,7 @@ class Boid {
 
   push(target: P5.Vector, radius: number = 200, forceFactor: number = 1) {
     const p = this.p5
-    const distance = target.dist(this.position)
+    const distance = target.dist(this.location)
 
     if (distance < radius) {
       const steer = this.seek(target)

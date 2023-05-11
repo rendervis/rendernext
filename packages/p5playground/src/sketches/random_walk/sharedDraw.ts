@@ -5,6 +5,5 @@ export function sharedDraw(p: P5) {
   // Set CENTER mode
   p.ellipseMode(p.CENTER)
 
-  w.step(p)
-  w.display(p)
+  w.run()
 }
