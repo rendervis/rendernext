@@ -6,9 +6,11 @@ interface IMoverBase {
   velocity: P5.Vector
   acceleration: P5.Vector
 
+  mass: number
   maxSpeed: number
   /** Mover radius */
   r: number
+
   p5: P5
 
   /**
@@ -31,6 +33,7 @@ class MoverBase implements IMoverBase {
   velocity: P5.Vector
   acceleration: P5.Vector
 
+  mass: number
   maxSpeed: number
   r: number
 
@@ -44,13 +47,18 @@ class MoverBase implements IMoverBase {
     this.velocity = p.createVector(p.cos(angle), p.sin(angle))
     this.acceleration = p.createVector(0, 0)
 
+    this.mass = 250
     this.maxSpeed = maxSpeed
     this.r = radius
   }
 
   applyForce(force: P5.Vector) {
+    const f = force.copy()
+
     // We could add mass here A = F / M
-    this.acceleration.add(force)
+    const A = this.p5.createVector(f.x / this.mass, f.y / this.mass)
+
+    this.acceleration.add(A)
   }
 
   update() {
@@ -123,6 +131,10 @@ class Walker extends MoverBase implements IMover {
   step() {
     const p = this.p5
 
+    // forces
+    const wind = p.createVector(-0.8, 0)
+    const gravity = p.createVector(0, 0.1)
+
     // Perlin noise walker
     const stepX = p.map(p.noise(this.xOff), 0, 1, -p.width, p.width)
     const stepY = p.map(p.noise(this.yOff), 0, 1, -p.height, p.height)
@@ -135,10 +147,12 @@ class Walker extends MoverBase implements IMover {
     let steer = desired.sub(this.velocity)
     steer.limit(this.maxForce)
 
+    this.applyForce(wind)
+    this.applyForce(gravity)
     this.applyForce(steer)
 
-    this.xOff += 0.01 // increase the offset values to change the movement pattern
-    this.yOff += 0.02
+    this.xOff += 0.001 // increase the offset values to change the movement pattern
+    this.yOff += 0.002
   }
 
   render() {

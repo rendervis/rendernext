@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Card } from '@/components/Card'
-import {LinkIcon} from '@/components/icons'
+import { LinkIcon } from '@/components/icons'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import logoPropunem from '@/images/logos/propunem.jpg'
+import renderNext from '@/images/logos/rendernext.svg'
 
 const projects = [
   {
@@ -13,9 +14,16 @@ const projects = [
     link: { href: 'https://propunem.ro', label: 'propunem.ro' },
     logo: logoPropunem,
   },
-
-
-
+  {
+    name: 'Storefront',
+    description:
+      'Introducing Moncler inspired E-Commerce Template! Simplify your online business with our easy-to-use starter kit, designed with sleek and modern UI that resembles the elegance of the famous Moncler brand. Transform your e-commerce website with our template and start selling in no time!',
+    link: {
+      href: 'https://luminous-chaja-0fa207.netlify.app/',
+      label: 'e-commerce',
+    },
+    logo: renderNext,
+  },
 ]
 
 export default function Projects() {
@@ -23,10 +31,7 @@ export default function Projects() {
     <>
       <Head>
         <title>Projects - Talvan Octavian</title>
-        <meta
-          name="description"
-          content="Things I’ve made."
-        />
+        <meta name="description" content="Things I’ve made." />
       </Head>
       <SimpleLayout
         title="Things I’ve made."

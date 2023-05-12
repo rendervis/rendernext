@@ -106,7 +106,7 @@ module.exports = async () => {
 
   return {
     experiments: {
-      asyncWebAssembly: true
+      asyncWebAssembly: true,
     },
     entry: {
       index: path.resolve(__dirname, 'src/index.ts'),
