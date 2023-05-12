@@ -132,9 +132,9 @@ export default function Home({ articles }) {
         />
       </Head>
       <div className="absolute left-0 top-0 h-full w-full">
-        <Pointillism id='canvas-about-page' />
+        <Pointillism id="canvas-about-page" />
       </div>
-      <Container className="mt-9">
+      <Container>
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
             Software developer.
