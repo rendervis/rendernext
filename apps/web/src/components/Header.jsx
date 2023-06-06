@@ -97,7 +97,7 @@ function NavItem({ href, children }) {
 function DesktopNavigation(props) {
   return (
     <nav {...props}>
-      <ul className="flex rounded-md bg-white/90 px-3 text-sm font-medium text-zinc-800">
+      <ul className="flex rounded-md bg-inherit px-3 text-sm font-medium text-zinc-800">
         <NavItem href="/">About</NavItem>
         <NavItem href="/articles">Articles</NavItem>
         <NavItem href="/projects">Projects</NavItem>

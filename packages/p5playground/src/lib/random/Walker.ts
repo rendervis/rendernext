@@ -1,7 +1,8 @@
+// p5playground/src/lib/random/Walker.ts
 import { Vector, Vector2 } from '@dimforge/rapier2d'
 import P5 from 'p5'
 
-interface IMoverBase {
+interface IParticle {
   location: P5.Vector
   velocity: P5.Vector
   acceleration: P5.Vector
@@ -28,7 +29,9 @@ interface IMoverBase {
   borders(): void
 }
 
-class MoverBase implements IMoverBase {
+class Particle implements IParticle {
+  p5: P5
+
   location: P5.Vector
   velocity: P5.Vector
   acceleration: P5.Vector
@@ -37,9 +40,19 @@ class MoverBase implements IMoverBase {
   maxSpeed: number
   r: number
 
-  p5: P5
+  /** @type {boolean} mouse Dragging */
+  dragging: boolean
+  rollover: boolean
+  dragOffset: P5.Vector
 
-  constructor(x: number, y: number, p: P5, maxSpeed: number, radius: number) {
+  constructor(
+    x: number,
+    y: number,
+    p: P5,
+    maxSpeed: number,
+    radius: number,
+    mass = 1
+  ) {
     const angle = p.random(p.TWO_PI)
 
     this.p5 = p
@@ -47,15 +60,19 @@ class MoverBase implements IMoverBase {
     this.velocity = p.createVector(p.cos(angle), p.sin(angle))
     this.acceleration = p.createVector(0, 0)
 
-    this.mass = 250
+    this.mass = mass
     this.maxSpeed = maxSpeed
     this.r = radius
+
+    this.dragging = false
+    this.rollover = false
+    this.dragOffset = this.p5.createVector(0, 0)
   }
 
   applyForce(force: P5.Vector) {
     const f = force.copy()
 
-    // We could add mass here A = F / M
+    // A = F / M
     const A = this.p5.createVector(f.x / this.mass, f.y / this.mass)
 
     this.acceleration.add(A)
@@ -94,6 +111,39 @@ class MoverBase implements IMoverBase {
       this.location.y = -this.r // Wrap around bottom edge
     }
   }
+
+  // mouse interaction
+  handlePress(mx: number, my: number) {
+    console.log('Walker::handlePress')
+    const p = this.p5
+    let d = p.dist(mx, my, this.location.x, this.location.y)
+    if (d < this.mass) {
+      this.dragging = true
+      this.dragOffset.x = this.location.x - mx
+      this.dragOffset.y = this.location.y - my
+    }
+  }
+
+  handleHover(mx: number, my: number) {
+    const p = this.p5
+    let d = p.dist(mx, my, this.location.x, this.location.y)
+    if (d < this.mass) {
+      this.rollover = true
+    } else {
+      this.rollover = false
+    }
+  }
+
+  stopDragging() {
+    this.dragging = false
+  }
+
+  handleDrag(mx: number, my: number) {
+    if (this.dragging) {
+      this.location.x = mx + this.dragOffset.x
+      this.location.y = my + this.dragOffset.y
+    }
+  }
 }
 
 interface IMover {
@@ -101,9 +151,10 @@ interface IMover {
   render(p: P5): void
 }
 
-class Walker extends MoverBase implements IMover {
+class Walker extends Particle implements IMover {
   p5: P5
   maxForce: number
+  path: P5.Vector[]
 
   prob: number
   /** @type {number} x Offset */
@@ -112,16 +163,31 @@ class Walker extends MoverBase implements IMover {
   yOff: number
 
   constructor(p: P5) {
-    super(p.width / 2, p.height / 2, p, 2, 6)
+    super(p.width / 2, p.height / 2, p, 1.2, 6, 1.6)
     this.p5 = p
 
-    this.maxForce = 0.02
+    this.maxForce = 0.14
     this.prob = 0.5
     this.xOff = 0
-    this.yOff = 20000
+    this.yOff = 5000
+
+    this.path = []
   }
 
-  run() {
+  run(elements: any[]) {
+    for (let i = 0; i < elements.length; i++) {
+      const envElement = elements[i]
+      console.log('envElement.contains::', envElement.contains(this.location))
+
+      if (envElement.contains(this.location)) {
+        const envForce = envElement.calculate(this)
+        this.applyForce(envForce)
+      }
+    }
+
+    // Add current location to path
+    this.path.push(this.location.copy())
+
     this.step()
     this.update()
     this.borders()
@@ -130,10 +196,6 @@ class Walker extends MoverBase implements IMover {
   }
   step() {
     const p = this.p5
-
-    // forces
-    const wind = p.createVector(-0.8, 0)
-    const gravity = p.createVector(0, 0.1)
 
     // Perlin noise walker
     const stepX = p.map(p.noise(this.xOff), 0, 1, -p.width, p.width)
@@ -147,25 +209,41 @@ class Walker extends MoverBase implements IMover {
     let steer = desired.sub(this.velocity)
     steer.limit(this.maxForce)
 
-    this.applyForce(wind)
-    this.applyForce(gravity)
     this.applyForce(steer)
 
-    this.xOff += 0.001 // increase the offset values to change the movement pattern
-    this.yOff += 0.002
+    this.xOff += 0.02 // increase the offset values to change the movement pattern
+    this.yOff += 0.02
   }
 
   render() {
     const p = this.p5
-    // Point
-    // p.point(this.location.x, this.location.y)
-    // p.stroke('purple')
-    // p.strokeWeight(10)
+
     drawTriangle(this.location, this.velocity, p, this.r)
+
+    // Draw path
+    this.p5.noFill()
+    this.p5.stroke(255, 222, 0, 50)
+
+    for (let i = 0; i < this.path.length - 1; i++) {
+      const location = this.path[i].copy()
+      if (i % 200 === 0) {
+        this.p5.strokeWeight(4)
+        this.p5.ellipse(location.x, location.y, 18, 18)
+      }
+      if (i > 0) {
+        const p1 = this.path[i - 1]
+        const d = location.dist(p1)
+        if (d <= 20) {
+          this.p5.strokeWeight(1)
+          this.p5.line(p1.x, p1.y, location.x, location.y)
+        }
+      }
+    }
   }
 }
 
 export default Walker
+export { Particle }
 
 function drawTriangle(
   position: P5.Vector,
@@ -175,15 +253,21 @@ function drawTriangle(
 ) {
   // Draw a triangle rotated in the direction of velocity
   let theta = velocity.heading() - p.PI / 2
+  p.rectMode(p.CENTER)
+
   p.fill(255, 222, 0)
-  p.stroke(255, 222, 0)
   p.push()
+  p.stroke(255, 222, 0)
   p.translate(position.x, position.y)
   p.rotate(theta)
   p.beginShape(p.TRIANGLES)
   p.vertex(0, r * 2)
-  p.vertex(-r, -r * 2)
-  p.vertex(r, -r * 2)
+  p.vertex(-r - 5, -r * 2)
+  p.vertex(r + 5, -r * 2)
   p.endShape()
+
+  p.rect(5, -r - 10, 3, 4)
+  p.rect(-5, -r - 10, 3, 4)
+
   p.pop()
 }
