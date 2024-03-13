@@ -101,9 +101,8 @@ function Resume() {
               <dt className="sr-only">Date</dt>
               <dd
                 className="ml-auto text-xs text-zinc-400"
-                aria-label={`${role.start.label ?? role.start} until ${
-                  role.end.label ?? role.end
-                }`}
+                aria-label={`${role.start.label ?? role.start} until ${role.end.label ?? role.end
+                  }`}
               >
                 <time dateTime={role.start.dateTime ?? role.start}>
                   {role.start.label ?? role.start}
@@ -128,7 +127,7 @@ export default function Home({ articles }) {
         <title>Software developer</title>
         <meta
           name="description"
-          content="I am Talvan Octavian, an application developer from Romania who is passionate about creating user-friendly web applications. My specialty lies in the Canva API and its related libraries, such as p5JS and threeJS. By leveraging my expertise, I hope to offer creative solutions to companies looking to augment their online presence. Let's work together to materialize your vision with the aid of technology."
+          content="I am Tălvan Octavian, an application developer from Romania who is passionate about creating user friendly web applications. My specialty lies in React Frontend Development with a strong interest in the Canva API and its related libraries, such as p5JS and threeJS. By leveraging my expertise, I hope to offer creative solutions to companies looking to augment their online presence. Let's work together to materialize your vision with the aid of technology."
         />
       </Head>
       <div className="absolute left-0 top-0 h-full w-full">
@@ -140,10 +139,9 @@ export default function Home({ articles }) {
             Software developer.
           </h1>
           <p className="mt-6 text-base text-zinc-600">
-            I am Talvan Octavian, an application developer from Romania who is
+            I am Tălvan Octavian, an application developer from Romania who is
             passionate about creating user-friendly web applications. My
-            specialty lies in the Canva API and its related libraries, such as
-            p5JS and threeJS. By leveraging my expertise, I hope to offer
+            specialty lies in React Frontend Development with a strong interest in the Canva API and its related libraries, such as p5JS and threeJS. By leveraging my expertise, I hope to offer
             creative solutions to companies looking to augment their online
             presence. Let&apos;s work together to materialize your vision with
             the aid of technology.
