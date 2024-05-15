@@ -124,10 +124,10 @@ export default function Home({ articles }) {
   return (
     <>
       <Head>
-        <title>Software developer</title>
+        <title>Rendernext | Web site development</title>
         <meta
           name="description"
-          content="I am Tălvan Octavian, an application developer from Romania who is passionate about creating user friendly web applications. My specialty lies in React Frontend Development with a strong interest in the Canva API and its related libraries, such as p5JS and threeJS. By leveraging my expertise, I hope to offer creative solutions to companies looking to augment their online presence. Let's work together to materialize your vision with the aid of technology."
+          content="I am Tălvan Octavian, application and web developer from Romania who is passionate about creating user friendly web applications. My specialty lies in React Frontend Development with a strong interest in the Canva API and its related libraries, such as p5JS and threeJS. By leveraging my expertise, I hope to offer creative solutions to companies looking to augment their online presence. Let's work together to materialize your vision with the aid of technology."
         />
       </Head>
       <div className="absolute left-0 top-0 h-full w-full">
@@ -136,11 +136,11 @@ export default function Home({ articles }) {
       <Container>
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
-            Software developer.
+            Website development.
           </h1>
           <p className="mt-6 text-base text-zinc-600">
-            I am Tălvan Octavian, an application developer from Romania who is
-            passionate about creating user-friendly web applications. My
+            I am Tălvan Octavian, application and web developer from Romania who is
+            passionate about creating user friendly web applications. My
             specialty lies in React Frontend Development with a strong interest in the Canva API and its related libraries, such as p5JS and threeJS. By leveraging my expertise, I hope to offer
             creative solutions to companies looking to augment their online
             presence. Let&apos;s work together to materialize your vision with
