@@ -1,36 +1,20 @@
-import nextMDX from '@next/mdx'
-import remarkGfm from 'remark-gfm'
-import rehypePrism from '@mapbox/rehype-prism'
-import  withPlugins from 'next-compose-plugins'
-import path from 'path'
+// apps/web/next.config.mjs
+import createMDX from '@next/mdx'
 
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
-  reactStrictMode: true,
-  // transpilePackages: ['p5playground', 'ui'],
-  experimental: {
-    scrollRestoration: true,
-  },
-  webpack: (config) => {
-    config.resolve.alias['p5playground'] = path.resolve(
-      process.cwd(),
-      '../../packages/p5playground/dist/js'
-    )
-    return config
-  },
-}
-
-
-
-const withMDX = nextMDX({
+const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypePrism],
+    remarkPlugins: ['remark-gfm'],
+    rehypePlugins: ['@mapbox/rehype-prism'],
   },
 })
 
-export default withPlugins([withMDX],nextConfig)
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+  reactStrictMode: true,
+  transpilePackages: ['p5playground', 'ui'],
 
+}
+
+export default withMDX(nextConfig)

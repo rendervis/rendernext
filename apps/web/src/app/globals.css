@@ -1,0 +1,92 @@
+/* apps/web/src/app/globals.css */
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #131313;
+  --color-surface: #181818;
+  --color-surface-container: #201f1f;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-lowest: #0e0e0e;
+
+  --color-border: #333333;
+  --color-primary: #f59e0b;
+  --color-primary-soft: #ffb95f;
+  --color-primary-fixed: #ffddb8;
+
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-muted: #d8c3ad;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-inter), system-ui, sans-serif;
+  --font-label: var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
+
+  --container-site: 90rem;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #131313;
+  color: #e5e2e1;
+}
+main {
+ display: flex;
+ flex-grow: 1;
+ flex-direction: column;
+}
+
+::selection {
+  background: #f59e0b;
+  color: #2a1700;
+}
+
+.grid-line {
+  border-color: #333333;
+}
+
+.rendernext-prose {
+  color: var(--color-on-surface-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.rendernext-prose > * + * {
+  margin-top: 1.5rem;
+}
+
+.rendernext-prose h2 {
+  margin-top: 3rem;
+  color: var(--color-on-surface);
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.rendernext-prose p {
+  max-width: 72ch;
+}
+
+.rendernext-prose ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.rendernext-prose li + li {
+  margin-top: 0.5rem;
+}
+
+.rendernext-prose a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

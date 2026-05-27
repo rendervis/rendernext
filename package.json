@@ -8,11 +8,11 @@
     "format": "prettier --write \"**/*.{ts,tsx,jsx,mdx}\""
   },
   "devDependencies": {
-    "eslint": "7.32.0",
+    "eslint": "9.39.1",
     "eslint-config-custom": "workspace:*",
-    "prettier": "2.7.1",
-    "prettier-plugin-tailwindcss": "0.1.11",
-    "turbo": "latest"
+    "prettier": "3.8.3",
+    "prettier-plugin-tailwindcss": "0.8.0",
+    "turbo": "2.9.15"
   },
-  "packageManager": "pnpm@7.15.0"
+  "packageManager": "pnpm@10.33.4"
 }

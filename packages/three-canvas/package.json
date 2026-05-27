@@ -19,13 +19,13 @@
   },
   "devDependencies": {
     "vite": "4.3.3",
-    "@types/node": "18.15.13",
-    "@types/react": "18.0.11",
-    "@types/react-dom": "18.0.11",
+    "@types/node": "25.9.1",
+    "@types/react": "19.2.15",
+    "@types/react-dom": "19.2.3",
     "@types/three": "0.150.1",
     "@vitejs/plugin-react": "latest",
     "tsconfig": "workspace:*",
-    "typescript": "5.0.4",
+    "typescript": "6.0.3",
     "vite-tsconfig-paths": "4.2.0"
   }
 }
