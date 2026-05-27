@@ -43,6 +43,6 @@
     "tailwind-config": "workspace:*",
     "tailwindcss": "4.3.0",
     "tsconfig": "workspace:*",
-    "typescript": "5.9.4"
+    "typescript": "5.9.2"
   }
 }
