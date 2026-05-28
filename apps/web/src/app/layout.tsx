@@ -41,11 +41,16 @@ export const metadata: Metadata = {
     'RenderNext',
   ],
   alternates: {
-    canonical: '/',
+    canonical: 'https://www.rendernext.eu',
+  },
+  icons: {
+    icon: [{ url: '/favicon.ico' }],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+    other: [{ rel: 'mask-icon', url: '/favicon.svg', color: '#ffddb8' }],
   },
   openGraph: {
     type: 'website',
-    url: '/',
+    url: 'https://www.rendernext.eu/',
     siteName: 'RenderNext',
     title:
       'RenderNext — Web App Development, SaaS MVPs & Interactive Product Experiences',
@@ -62,6 +67,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  other: {
+    'google-site-verification': '88st--ci-qjg77Xp6sWrJovVpx7VYBiwZyvcUGV2rSA',
   },
 }
 
